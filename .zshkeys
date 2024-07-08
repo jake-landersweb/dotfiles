@@ -1,0 +1,55 @@
+# Custom parsing code to make keyboard navigation easier
+function zsh_custom_word_chars {
+    local cmd=$1
+    local chars=" \t\n\"\'!@#$%^&*()-=+[{]}\|;:,<.>/?"
+
+    case $cmd in
+        add)
+            for c in $(echo "$chars" | fold -w1); do
+            WORDCHARS="${WORDCHARS//${c}}"
+            done
+            ;;
+        del)
+            WORDCHARS="$chars"
+            ;;
+    esac
+}
+
+autoload -U select-word-style
+select-word-style bash
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+zsh_custom_word_chars add
+
+# Key bindings
+# note, different terminal applications handle key-events a bit differently
+# bindkey -L
+
+# iterm2
+bindkey '^[b' backward-word # opt + larr
+bindkey '^[f' forward-word # opt + rarr
+bindkey '^[OH' beginning-of-line # cmd + larr
+bindkey '^[OF' end-of-line # cmd + rarr
+bindkey '^[[B' history-beginning-search-forward # downarr
+bindkey '^[[A' history-beginning-search-backward # uparr
+
+# ALACRITTY
+# bindkey '^[[1;3D' backward-word # opt + larr
+# bindkey '^[[1;3C' forward-word # opt + rarr
+# bindkey '^[[1;9D' beginning-of-line # cmd + larr
+# bindkey '^[[1;9C' end-of-line # cmd + rarr
+
+# zstyles
+zstyle ':completion:*:*:*:default' menu yes select search 
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**'
+
+# workaround to make fzf-tab work with zsh-autocompletions
+my-fzf-tab() {
+  functions[compadd]=$functions[-ftb-compadd]
+  zle fzf-tab-complete
+}
+zle -N my-fzf-tab
+bindkey "^I" my-fzf-tab

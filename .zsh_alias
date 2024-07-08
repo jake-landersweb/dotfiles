@@ -1,0 +1,24 @@
+# BASIC
+alias code="open -a \"Visual Studio Code\""
+alias ls="ls --color=auto"
+alias l="ls"
+alias ll="ls -lah"
+alias zp="code ~/.zshrc"
+alias ali="code ~/.zsh_alias"
+alias szp="source ~/.zshrc"
+alias lines="find . -name '*.py' | xargs wc -l"
+
+# REPLACEMENT TOOLS
+alias cat="bat"
+alias grep="rg"
+alias fzf="fzf --preview \"bat --color=always --style=numbers --line-range=:500 {}\""
+
+# JAVA
+alias java8="source /usr/local/bin/.jdk8.sh"
+alias java17="source /usr/local/bin/.jdk17.sh"
+alias java19="source /usr/local/bin/.jdk19.sh"
+alias imagej="java17 && java -jar /usr/local/bin/imagej/ij.jar"
+
+# iOS dev
+alias sim="open -a Simulator.app"
+alias xcode="sudo xcode-select -s /Applications/Xcode.app"
