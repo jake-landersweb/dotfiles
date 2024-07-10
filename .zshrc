@@ -62,8 +62,8 @@ PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH" # psql
 PATH="$PATH:/usr/local/bin/xpdf-tools-mac-4.05/binARM"
 PATH="$PATH:$HOME/go/bin" # go
 
-PATH="$PNPM_HOME:$PATH"
 export PNPM_HOME="$HOME/Library/pnpm"
+PATH="$PNPM_HOME:$PATH"
 
 # Load completions
 autoload -Uz compinit && compinit

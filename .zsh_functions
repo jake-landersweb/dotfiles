@@ -1,0 +1,22 @@
+function gh-login() {
+    echo $GH_TOKEN | docker login ghcr.io -u $GH_USERNAME --password-stdin
+}
+
+function sql() {
+	mysql --defaults-group-suffix="_$1"
+}
+
+function loc() {
+	find . -name "*.$1" -print0 | xargs -0 wc -l
+}
+
+function resize_image() {
+    source_image=$1
+    shift
+    sizes=("$@")
+
+    for size in "${sizes[@]}"; do
+        output_image="${size}x_${source_image}"
+        ffmpeg -i "$source_image" -vf "scale=$size:-1" "$output_image"
+    done
+}
