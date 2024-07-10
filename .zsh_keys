@@ -29,8 +29,8 @@ bindkey '^[b' backward-word # opt + larr
 bindkey '^[f' forward-word # opt + rarr
 bindkey '^[OH' beginning-of-line # cmd + larr
 bindkey '^[OF' end-of-line # cmd + rarr
-bindkey '^[[B' history-beginning-search-forward # downarr
-bindkey '^[[A' history-beginning-search-backward # uparr
+bindkey '^[[B' history-search-forward # downarr
+bindkey '^[[A' history-search-backward # uparr
 
 # ALACRITTY
 # bindkey '^[[1;3D' backward-word # opt + larr
