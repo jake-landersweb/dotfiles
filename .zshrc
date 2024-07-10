@@ -53,19 +53,17 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Path
-PATH="/Users/jakelanders/.cargo/bin:$PATH" # rust
-# PATH="/opt/homebrew/opt/python@3.12/bin:$PATH" #
+# Path -- custom to each installation
+PATH="$HOME/.cargo/bin:$PATH" # rust
 PATH="$PATH:/usr/local/bin/flutter/bin" # flutter
 PATH="$PATH":"$HOME/.pub-cache/bin" # flutter
 PATH="$PATH:/usr/local/bin/cpdf/bin" # cpdf *.pdf -o all.pdf
 PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH" # psql
 PATH="$PATH:/usr/local/bin/xpdf-tools-mac-4.05/binARM"
-PATH="$PATH:/Users/jakelanders/go/bin" # go
+PATH="$PATH:$HOME/go/bin" # go
 
-# pnpm
-export PNPM_HOME="/Users/jakelanders/Library/pnpm"
 PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="$HOME/Library/pnpm"
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -85,9 +83,26 @@ setopt hist_find_no_dups
 
 # custom source scripts
 export TERM=xterm-256color
-source ~/.zsh_alias # alias
-source ~/.zsh_functions # funcs
-source ~/.zshkeys # custom key bindings
+
+# Aliases
+if [[ -f "$HOME/.zsh_alias" ]];then
+  source "$HOME/.zsh_alias"
+fi
+
+# Functions
+if [[ -f "$HOME/.zsh_functions" ]];then
+  source "$HOME/.zsh_functions"
+fi
+
+# Keybindings
+if [[ -f "$HOME/.zsh_keys" ]];then
+  source "$HOME/.zsh_keys"
+fi
+
+# Secrets
+if [[ -f "$HOME/.zsh_secrets" ]];then
+  source "$HOME/.zsh_secrets"
+fi
 
 # Shell integrations
 eval "$(fzf --zsh)"
