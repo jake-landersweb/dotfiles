@@ -1,0 +1,9 @@
+########################################
+# Aliases
+########################################
+alias ls="ls --color=auto"
+alias l="ls"
+alias ll="ls -lah"
+alias szp="source ~/.zshrc"
+alias zp="code ~/dotfiles"
+

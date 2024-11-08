@@ -49,21 +49,10 @@ source "$plugin/fzf-tab.plugin.zsh"
 ###
 
 # Homebrew on macOS
+export HOMEBREW_NO_AUTO_UPDATE=1
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
-# Path -- custom to each installation
-PATH="$HOME/.cargo/bin:$PATH" # rust
-PATH="$PATH:/usr/local/bin/flutter/bin" # flutter
-PATH="$PATH":"$HOME/.pub-cache/bin" # flutter
-PATH="$PATH:/usr/local/bin/cpdf/bin" # cpdf *.pdf -o all.pdf
-PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH" # psql
-PATH="$PATH:/usr/local/bin/xpdf-tools-mac-4.05/binARM"
-PATH="$PATH:$HOME/go/bin" # go
-
-export PNPM_HOME="$HOME/Library/pnpm"
-PATH="$PNPM_HOME:$PATH"
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -81,27 +70,25 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# custom source scripts
 export TERM=xterm-256color
 
-# Aliases
-if [[ -f "$HOME/.zsh_alias" ]];then
-  source "$HOME/.zsh_alias"
+# Base config
+if [[ -f "$HOME/.zsh_config_base" ]]; then
+  source "$HOME/.zsh_config_base"
+else
+  echo "$HOME/.zsh_config_base is required to exist."
 fi
 
-# Functions
-if [[ -f "$HOME/.zsh_functions" ]];then
-  source "$HOME/.zsh_functions"
+# Specific computer config
+if [[ -f "$HOME/.zsh_config" ]]; then
+  source "$HOME/.zsh_config"
+else
+  echo "$HOME/.zsh_config is required to exist."
 fi
 
 # Keybindings
-if [[ -f "$HOME/.zsh_keys" ]];then
+if [[ -f "$HOME/.zsh_keys" ]]; then
   source "$HOME/.zsh_keys"
-fi
-
-# Secrets
-if [[ -f "$HOME/.zsh_secrets" ]];then
-  source "$HOME/.zsh_secrets"
 fi
 
 # Shell integrations

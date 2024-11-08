@@ -23,20 +23,25 @@ zsh_custom_word_chars add
 # Key bindings
 # note, different terminal applications handle key-events a bit differently
 # bindkey -L
-
-# iterm2
-bindkey '^[b' backward-word # opt + larr
-bindkey '^[f' forward-word # opt + rarr
-bindkey '^[OH' beginning-of-line # cmd + larr
-bindkey '^[OF' end-of-line # cmd + rarr
-bindkey '^[[B' history-search-forward # downarr
-bindkey '^[[A' history-search-backward # uparr
-
-# ALACRITTY
-# bindkey '^[[1;3D' backward-word # opt + larr
-# bindkey '^[[1;3C' forward-word # opt + rarr
-# bindkey '^[[1;9D' beginning-of-line # cmd + larr
-# bindkey '^[[1;9C' end-of-line # cmd + rarr
+if [[ $(uname) -eq "Darwin" ]]; then
+    if [[ $(basename "$(ps -o comm= -p $PPID)") -eq "alacritty" ]]; then
+        # ALACRITTY
+        bindkey '^[[1;3D' backward-word # opt + larr
+        bindkey '^[[1;3C' forward-word # opt + rarr
+        bindkey '^[[1;9D' beginning-of-line # cmd + larr
+        bindkey '^[[1;9C' end-of-line # cmd + rarr
+        bindkey '^[[B' history-search-forward # downarr
+        bindkey '^[[A' history-search-backward # uparr
+    elif [[ "${TERM_PROGRAM}" -eq "iTerm.app" ]]; then
+        # iterm2
+        bindkey '^[b' backward-word # opt + larr
+        bindkey '^[f' forward-word # opt + rarr
+        bindkey '^[OH' beginning-of-line # cmd + larr
+        bindkey '^[OF' end-of-line # cmd + rarr
+        bindkey '^[[B' history-search-forward # downarr
+        bindkey '^[[A' history-search-backward # uparr
+    fi
+fi ## TODO -- add linux configuration options
 
 # zstyles
 zstyle ':completion:*:*:*:default' menu yes select search 
