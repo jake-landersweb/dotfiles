@@ -1,9 +1,14 @@
 ########################################
 # Aliases
 ########################################
-alias ls="ls --color=auto"
+if [ $(which eza) ]; then
+    alias ls="eza --icons=auto"
+    alias ll="eza -l -a -H"
+else
+    alias ls="ls --color=auto"
+    alias ll="ls -lah"
+fi
 alias l="ls"
-alias ll="ls -lah"
 alias szp="source ~/.zshrc"
 alias zp="code ~/dotfiles"
 
