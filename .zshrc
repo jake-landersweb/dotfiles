@@ -18,12 +18,17 @@ source "$ZSH_CONFIG_ROOT/p10k/powerlevel10k.zsh-theme"
 
 ### PLUGINS
 
-# syntax highlighting
-plugin="$ZSH_CONFIG_ROOT/zsh-syntax-highlighting"
+# fzf tab menu
+plugin="$ZSH_CONFIG_ROOT/fzf-tab"
 if [[ ! -d "$plugin" ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $plugin
+  git clone --depth=1 https://github.com/Aloxaf/fzf-tab.git $plugin
 fi
-source "$plugin/zsh-syntax-highlighting.zsh"
+source "$plugin/fzf-tab.plugin.zsh"
+# plugin="$ZSH_CONFIG_ROOT/zsh-autocomplete"
+# if [[ ! -d "$plugin" ]]; then
+#   git clone --depth=1 https://github.com/marlonrichert/zsh-autocomplete.git $plugin
+# fi
+# source "$plugin/zsh-autocomplete.plugin.zsh"
 
 # more completions
 plugin="$ZSH_CONFIG_ROOT/zsh-completions"
@@ -32,6 +37,23 @@ if [[ ! -d "$plugin" ]]; then
 fi
 fpath=($plugin/src $fpath)
 
+# Load completions
+autoload -Uz compinit && compinit -u
+
+# syntax highlighting
+plugin="$ZSH_CONFIG_ROOT/zsh-syntax-highlighting"
+if [[ ! -d "$plugin" ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $plugin
+fi
+source "$plugin/zsh-syntax-highlighting.zsh"
+
+# substring history
+plugin="$ZSH_CONFIG_ROOT/zsh-history-substring"
+if [[ ! -d "$plugin" ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search $plugin
+fi
+source $plugin/zsh-history-substring-search.zsh
+
 # auto suggestions
 plugin="$ZSH_CONFIG_ROOT/zsh-autosuggestions"
 if [[ ! -d "$plugin" ]]; then
@@ -39,23 +61,14 @@ if [[ ! -d "$plugin" ]]; then
 fi
 source "$plugin/zsh-autosuggestions.zsh"
 
-# fzf tab menu
-plugin="$ZSH_CONFIG_ROOT/fzf-tab"
-if [[ ! -d "$plugin" ]]; then
-  git clone --depth=1 https://github.com/Aloxaf/fzf-tab.git $plugin
-fi
-source "$plugin/fzf-tab.plugin.zsh"
 
 ###
 
 # Homebrew on macOS
 export HOMEBREW_NO_AUTO_UPDATE=1
-if [[ -f "/opt/homebrew/bin/brew" ]] then
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
-# Load completions
-autoload -Uz compinit && compinit
  
 # History
 HISTSIZE=10000
