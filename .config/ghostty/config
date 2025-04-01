@@ -1,0 +1,6 @@
+theme = ayu
+font-size = 18
+fullscreen = false
+window-height = 1000000
+window-width = 1000000
+confirm-close-surface = false

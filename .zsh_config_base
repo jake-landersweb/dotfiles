@@ -3,7 +3,7 @@
 ########################################
 if [ $(which eza) ]; then
     alias ls="eza --icons=auto"
-    alias ll="eza -l -a -H"
+    alias ll="ls -l -a -H"
 else
     alias ls="ls --color=auto"
     alias ll="ls -lah"
