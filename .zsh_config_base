@@ -1,7 +1,7 @@
 ########################################
 # Aliases
 ########################################
-if [ $(which eza) ]; then
+if command -v eza &> /dev/null; then
     alias ls="eza --icons=auto"
     alias ll="ls -l -a -H"
 else
