@@ -4,3 +4,4 @@ fullscreen = false
 window-height = 1000000
 window-width = 1000000
 confirm-close-surface = false
+keybind = shift+enter=text:\x1b\r

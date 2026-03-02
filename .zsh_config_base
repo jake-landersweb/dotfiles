@@ -11,4 +11,4 @@ fi
 alias l="ls"
 alias szp="source ~/.zshrc"
 alias zp="code ~/dotfiles"
-
+alias clear_dns="sudo killall -HUP mDNSResponder"
