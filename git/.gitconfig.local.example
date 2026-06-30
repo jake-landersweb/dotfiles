@@ -1,0 +1,16 @@
+# Copy to ~/.gitconfig.local (gitignored) for per-machine git identity & secrets.
+# bootstrap.sh seeds this automatically if it doesn't exist.
+
+[user]
+	name = Your Name
+	email = you@example.com
+
+# Work laptop might instead use a company email:
+# [user]
+#	email = you@company.com
+
+# Commit signing (optional):
+# [user]
+#	signingkey = ...
+# [commit]
+#	gpgsign = true

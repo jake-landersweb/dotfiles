@@ -1,0 +1,18 @@
+# Copy to local.zsh (gitignored) for machine-specific, NON-secret config:
+# PATHs, version managers, tool init. This file is sourced into every shell.
+#
+#   cp local.zsh.example local.zsh
+
+# Local bins
+# export PATH="$HOME/.local/bin:$PATH"
+
+# Node / nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# asdf
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# Machine-specific toolchains (adjust versions/paths per laptop)
+# export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"

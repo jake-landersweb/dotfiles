@@ -1,0 +1,6 @@
+# Global gitignore (git core.excludesFile) — applies to every repo.
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/

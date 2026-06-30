@@ -1,2 +1,11 @@
-.zsh_config
 .DS_Store
+
+# Legacy per-machine secrets file (pre-restructure). Kept here defensively so it can
+# never be committed; migrate its contents into ~/.config/zsh/{secrets,local}.zsh then delete.
+.zsh_config
+
+# Personal, machine-specific files — seeded from *.example, never committed.
+zsh/.config/zsh/local.zsh
+zsh/.config/zsh/secrets.zsh
+zsh/.config/zsh/local.d/
+git/.gitconfig.local

@@ -37,7 +37,7 @@
 	autoupdate = true
 
 [core]
-	excludesFile = ~/.gitignore
+	excludesFile = ~/.config/git/ignore
 
 [rebase]
 	autoSquash = true
@@ -46,3 +46,8 @@
 
 [alias]
 	yolo = !git commit -m \"$(curl -s https://whatthecommit.com/index.txt)\"
+
+# Per-machine identity & secrets (name/email, signing keys, work overrides).
+# Seeded from git/.gitconfig.local.example by bootstrap.sh; gitignored. Listed last so it wins.
+[include]
+	path = ~/.gitconfig.local

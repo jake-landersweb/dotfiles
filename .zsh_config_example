@@ -1,5 +1,0 @@
-# Copy to '.zsh_config' for personal laptop configurations
-
-alias code=""
-export GH_USERNAME=""
-export GH_TOKEN=""
