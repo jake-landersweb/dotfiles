@@ -42,6 +42,19 @@ seed "$DOTFILES_DIR/zsh/.config/zsh/local.zsh.example"   "$HOME/.config/zsh/loca
 seed "$DOTFILES_DIR/zsh/.config/zsh/secrets.zsh.example" "$HOME/.config/zsh/secrets.zsh"
 seed "$DOTFILES_DIR/git/.gitconfig.local.example"        "$HOME/.gitconfig.local"
 
+# 5. VSCode keybindings (only keybindings.json is shared — never settings.json).
+#    Not a stow package because its path lives outside the $HOME dotfile layout.
+VSCODE_USER="$HOME/Library/Application Support/Code/User"
+if [[ -d "$HOME/Library/Application Support/Code" ]] || command -v code >/dev/null 2>&1; then
+  echo "==> Linking VSCode keybindings"
+  mkdir -p "$VSCODE_USER"
+  if [[ -e "$VSCODE_USER/keybindings.json" && ! -L "$VSCODE_USER/keybindings.json" ]]; then
+    mv "$VSCODE_USER/keybindings.json" "$VSCODE_USER/keybindings.json.backup"
+    echo "    backed up existing keybindings.json -> keybindings.json.backup"
+  fi
+  ln -sfn "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER/keybindings.json"
+fi
+
 cat <<'EOF'
 
 ==> Done. Next steps:

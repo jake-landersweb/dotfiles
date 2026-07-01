@@ -1,0 +1,15 @@
+// VSCode key bindings. Symlinked to
+// ~/Library/Application Support/Code/User/keybindings.json by bootstrap.sh.
+// Only keybindings are shared across machines — settings.json is intentionally NOT tracked.
+[
+  // shift+cmd+c: copy the active file's path relative to the workspace root
+  // (replaces the default "open external terminal", which we don't use).
+  {
+    "key": "shift+cmd+c",
+    "command": "-workbench.action.terminal.openNativeConsole"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "copyRelativeFilePath"
+  }
+]
