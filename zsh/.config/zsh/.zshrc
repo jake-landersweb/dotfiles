@@ -11,6 +11,9 @@ if [[ -x "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Shared user scripts (stowed from the dotfiles `scripts` package).
+export PATH="$HOME/.local/bin:$PATH"
+
 # Prompt, plugins, completions
 source "$ZDOTDIR/plugins.zsh"
 

@@ -6,7 +6,7 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$DOTFILES_DIR"
 
 # Packages to symlink into $HOME. Edit this list to install selectively per machine.
-PACKAGES=(zsh git vim ghostty p10k)
+PACKAGES=(zsh git vim ghostty p10k scripts)
 
 echo "==> Bootstrapping dotfiles from $DOTFILES_DIR"
 
