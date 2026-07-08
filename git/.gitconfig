@@ -46,6 +46,9 @@
 
 [alias]
 	yolo = !git commit -m \"$(curl -s https://whatthecommit.com/index.txt)\"
+	fold = commit --amend --no-edit
+	foldall = !git add -A && git commit --amend --no-edit
+    fixup = commit --fixup
 
 # Per-machine identity & secrets (name/email, signing keys, work overrides).
 # Seeded from git/.gitconfig.local.example by bootstrap.sh; gitignored. Listed last so it wins.
